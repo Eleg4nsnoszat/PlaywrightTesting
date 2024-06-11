@@ -2,6 +2,7 @@ import {test} from "@playwright/test";
 import LoginPage from "../pages/LoginPage";
 import { decyrpt, encrypt } from "../utils/CryptojsUtil";
 import { encryptEnvFile } from "../utils/EncryptEnvFile";
+import logger from "../utils/LoggerUtil";
 
 
 test("test", async({ page })=>{
@@ -11,6 +12,7 @@ test("test", async({ page })=>{
     await loginPage.fillUsername(decyrpt(process.env.username!));
     await loginPage.fillPassword(decyrpt(process.env.password!));
     await loginPage.clickLoginButton();
+    logger.info('Test is completed')
     //await homePage.expectServiceTitleToBeVisible();
 })
 
